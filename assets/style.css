@@ -89,13 +89,15 @@ select {
 
 .quick-links a,
 button {
-  border: 0;
-  border-radius: 4px;
-  background: var(--green);
+  border: 1px solid rgba(23, 79, 37, 0.72);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #12391b, #1f6230);
   color: #fff;
   cursor: pointer;
   font-weight: 700;
+  letter-spacing: 0.02em;
   text-decoration: none;
+  box-shadow: 0 8px 18px rgba(15, 59, 27, 0.18);
 }
 
 .quick-links a {
@@ -108,9 +110,17 @@ button {
   padding: 0 14px;
 }
 
+button:hover:not(:disabled),
+.quick-links a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(15, 59, 27, 0.24);
+}
+
 button:disabled {
   cursor: not-allowed;
-  background: #9fa79d;
+  border-color: #aeb5aa;
+  background: #aeb5aa;
+  box-shadow: none;
 }
 
 main {
@@ -490,97 +500,14 @@ th:nth-child(n + 2) {
   margin: 0;
   padding-left: 18px;
 }
-
-@media (max-width: 980px) {
-  .site-header,
-  .book-topline {
-    display: grid;
-  }
-
-  .quick-links {
-    justify-content: start;
-  }
-
-  .catalog-controls,
-  .page-hero,
-  .content-grid,
-  .bottom-grid,
-  .services-layout,
-  .service-columns {
-    grid-template-columns: 1fr;
-  }
-
-  #flipBook {
-    height: 82vh;
-    min-height: 620px;
-  }
-
-  .page {
-    padding: 18px;
-  }
-
-  .main-image {
-    height: 240px;
-  }
-}
-
-@media (max-width: 640px) {
-  main {
-    width: min(100% - 12px, 1440px);
-    padding-top: 8px;
-  }
-
-  .site-header {
-    position: static;
-  }
-
-  .brand {
-    min-width: 0;
-  }
-
-  .quick-links a {
-    width: 100%;
-    text-align: center;
-  }
-
-  .catalog-controls {
-    gap: 8px;
-    padding: 10px;
-  }
-
-  .pager {
-    justify-content: space-between;
-  }
-
-  #flipBook {
-    height: 78vh;
-    min-height: 560px;
-  }
-
-  .page {
-    padding: 14px;
-  }
-
-  .page-title {
-    font-size: 1.1rem;
-  }
-
-  .main-image {
-    height: 200px;
-  }
-
-  table {
-    font-size: 0.72rem;
-  }
-
-  th,
-  td {
-    padding: 5px;
-  }
-}
 #flipBook .stf__wrapper,
 #flipBook .stf__block {
   max-width: 100%;
+}
+
+#flipBook,
+#flipBook * {
+  touch-action: pan-y;
 }
 
 /* Typography aligned with cover */
@@ -645,8 +572,9 @@ table,
   }
 
   .cover-page img {
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
+    background: #0f3b1b;
   }
 
   .main-image {
@@ -693,8 +621,9 @@ table,
   }
 
   .cover-page img {
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
+    background: #0f3b1b;
   }
 
   .page-title {

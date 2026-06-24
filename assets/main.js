@@ -400,6 +400,11 @@ function renderOptions() {
 }
 
 function renderBook() {
+  if (state.pageFlip && typeof state.pageFlip.destroy === "function") {
+    state.pageFlip.destroy();
+    state.pageFlip = null;
+  }
+
   const items = filteredItems();
   els.book.innerHTML = `
     ${coverPage()}
@@ -426,15 +431,15 @@ function pageFlipConfig() {
     maxHeight: narrow ? 680 : 1200,
     drawShadow: true,
     maxShadowOpacity: 0.24,
-    flippingTime: 1250,
+    flippingTime: 1100,
     usePortrait: tablet,
     startPage: 0,
     autoSize: false,
-    showCover: true,
-    mobileScrollSupport: false,
+    showCover: false,
+    mobileScrollSupport: true,
     useMouseEvents: true,
     swipeDistance: 24,
-    disableFlipByClick: false
+    disableFlipByClick: true
   };
 }
 function createFlipBook() {
@@ -447,10 +452,6 @@ function createFlipBook() {
       page.style.display = index === 0 ? "block" : "none";
     });
     return;
-  }
-
-  if (state.pageFlip && typeof state.pageFlip.destroy === "function") {
-    state.pageFlip.destroy();
   }
 
   state.pageFlip = new St.PageFlip(els.book, pageFlipConfig());
@@ -499,7 +500,7 @@ els.search.addEventListener("input", () => {
   renderBook();
 });
 els.search.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") applySearch();
+  if (event.key === "Enter") { event.preventDefault(); applySearch(); }
   if (event.key === "Escape") {
     state.query = "";
     els.search.value = "";
@@ -521,6 +522,20 @@ els.style.addEventListener("change", (event) => {
 
 els.prev.addEventListener("click", flipPrev);
 els.next.addEventListener("click", flipNext);
+function turnFromClientX(clientX) {
+  if (!state.pageFlip) return;
+  const rect = els.book.getBoundingClientRect();
+  if (clientX < rect.left + rect.width / 2) {
+    flipPrev();
+  } else {
+    flipNext();
+  }
+}
+
+els.book.addEventListener("click", (event) => {
+  if (event.target.closest("a, button, input, select, textarea, label")) return;
+  turnFromClientX(event.clientX);
+});
 let resizeTimer = 0;
 let lastViewportWidth = window.innerWidth;
 window.addEventListener("resize", () => {
