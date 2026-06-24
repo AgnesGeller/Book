@@ -1,36 +1,26 @@
 # Book
 
-Lapozható évelő ágyáskatalógus ügyfélbemutatóhoz.
+Statikus, responsive Díszkertek flip-book katalógus.
 
-## Tartalom
+## Használat
 
-- HTML, CSS, JavaScript alapú flipbook.
-- PageFlip API-val lapozható katalógus.
-- Keresés: például `2x2 japán stílus`.
-- Szűrés méret és stílus szerint.
-- Méretek: `1x1`, `2x2`, `3x3`, `4x4`.
-- Magyarországon tartható, télálló évelőkre épített növénylisták.
-- A csatolt mintaképek assetként bekerültek, később cserélhetők.
-- Az árak nincsenek fixen bekódolva a növénylistába, mert később pontosíthatók.
+Nyisd meg az `index.html` fájlt böngészőben, vagy töltsd fel a teljes mappát webtárhelyre.
 
-## Indítás
+Nincs Node, nincs localhost, nincs build lépés.
 
-```bash
-npm run dev
+## Fájlok
+
+- `index.html`
+- `assets/style.css`
+- `assets/main.js`
+- `assets/img/`
+
+## JavaScript API
+
+```js
+window.DiszkertekFlipBook.next()
+window.DiszkertekFlipBook.prev()
+window.DiszkertekFlipBook.goTo(3)
+window.DiszkertekFlipBook.reset()
+window.DiszkertekFlipBook.pages()
 ```
-
-Megnyitás:
-
-```text
-http://localhost:5173
-```
-
-## Ellenőrzés
-
-```bash
-npm run check
-```
-
-## Licenc
-
-MIT

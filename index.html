@@ -3,80 +3,70 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Lapozható ügyfélkatalógus magyarországi kertekbe ajánlott évelő ágyásokkal."
-    />
-    <title>Book - Évelő Ágyáskatalógus</title>
+    <meta name="description" content="Díszkertek lapozható kerti ágyás katalógus kertépítéshez, magyarországi évelő növényekkel." />
+    <title>Díszkertek - Kerti ágyás katalógus</title>
+    <link rel="icon" type="image/png" href="./assets/img/logo.png" />
+    <link rel="apple-touch-icon" href="./assets/img/logo.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/page-flip/dist/css/page-flip.min.css" />
-    <link rel="stylesheet" href="./assets/style.css?v=3" />
+    <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
-    <main class="app">
-      <section class="catalog-toolbar" aria-label="Katalógus keresés">
-        <div>
-          <p class="eyebrow">Book</p>
-          <h1>Lapozható évelő ágyáskatalógus</h1>
-        </div>
+    <header class="site-header">
+      <a class="brand" href="https://diszkertek.hu/" target="_blank" rel="noreferrer">
+        <img src="./assets/img/logo.png" alt="Díszkertek logó" />
+        <span>
+          <strong>Díszkertek</strong>
+          <small>Minden, ami kerttel kapcsolatos</small>
+        </span>
+      </a>
+      <nav class="quick-links" aria-label="Gyors linkek">
+        <a href="https://diszkertek.hu/" target="_blank" rel="noreferrer">www.diszkertek.hu</a>
+        <a href="tel:+36706349630">+36 70 634 9630</a>
+        <a href="https://www.facebook.com/profile.php?id=61581708015145" target="_blank" rel="noreferrer">Facebook</a>
+      </nav>
+    </header>
 
-        <div class="controls">
-          <label class="search-field">
-            <span>Keresés</span>
-            <input id="search-input" type="search" placeholder="pl. 2x2 japán stílus" autocomplete="off" />
-          </label>
+    <main>
+      <section class="catalog-controls" aria-label="Katalógus keresés és szűrés">
+        <label class="search-control">
+          <span>Keresés</span>
+          <input id="searchInput" type="search" placeholder="pl. 2x2 japán" autocomplete="off" />
+        </label>
 
-          <label>
-            <span>Méret</span>
-            <select id="size-filter">
-              <option value="">Minden méret</option>
-            </select>
-          </label>
+        <label>
+          <span>Méret</span>
+          <select id="sizeFilter">
+            <option value="">Minden méret</option>
+          </select>
+        </label>
 
-          <label>
-            <span>Stílus</span>
-            <select id="style-filter">
-              <option value="">Minden stílus</option>
-            </select>
-          </label>
+        <label>
+          <span>Stílus irányzat</span>
+          <select id="styleFilter">
+            <option value="">Minden stílus</option>
+          </select>
+        </label>
 
-          <button id="reset-button" type="button">Törlés</button>
-        </div>
+        <button id="searchButton" type="button">Keresés</button>
       </section>
 
-      <section class="book-status" aria-live="polite">
-        <p id="result-summary">Betöltés...</p>
-        <div class="book-actions">
-          <button id="prev-page" type="button">Előző oldal</button>
-          <span id="page-status">1 / 1</span>
-          <button id="next-page" type="button">Következő oldal</button>
+      <section class="book-shell" aria-label="Lapozható flip-book katalógus">
+        <div class="book-topline">
+          <p id="resultInfo">Betöltés...</p>
+          <div class="pager">
+            <button id="prevPage" type="button" aria-label="Előző oldal">‹</button>
+            <span id="pageInfo">1 / 1</span>
+            <button id="nextPage" type="button" aria-label="Következő oldal">›</button>
+          </div>
         </div>
-      </section>
 
-      <section class="book-frame" aria-label="Lapozható katalógus">
-        <div id="flipbook"></div>
+        <div class="flipbook-frame">
+          <div id="flipBook" class="page-flip"></div>
+        </div>
       </section>
     </main>
 
-    <template id="cover-template">
-      <section class="page cover-page">
-        <div class="cover-inner">
-          <p class="eyebrow">Diszkertek ügyfélanyag</p>
-          <h2>Évelő ágyások katalógusa</h2>
-          <p>
-            Magyarországon tartható, télálló évelőkből összeállított mintatervek
-            1x1, 2x2, 3x3 és 4x4 méteres ágyásokhoz.
-          </p>
-          <div class="cover-grid">
-            <span>kereshető</span>
-            <span>lapozható</span>
-            <span>ügyfélbemutató</span>
-          </div>
-          <small>Az árak és termékképek később cserélhetők, a szerkezet készen áll.</small>
-        </div>
-      </section>
-    </template>
-
     <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
-    <script src="./assets/main.js?v=3" type="module"></script>
+    <script src="./assets/main.js"></script>
   </body>
 </html>
