@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lapozható ügyfélkatalógus magyarországi kertekbe ajánlott évelő ágyásokkal."
+    />
+    <title>Book - Évelő Ágyáskatalógus</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/page-flip/dist/css/page-flip.min.css" />
+    <link rel="stylesheet" href="./assets/style.css?v=3" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="catalog-toolbar" aria-label="Katalógus keresés">
+        <div>
+          <p class="eyebrow">Book</p>
+          <h1>Lapozható évelő ágyáskatalógus</h1>
+        </div>
+
+        <div class="controls">
+          <label class="search-field">
+            <span>Keresés</span>
+            <input id="search-input" type="search" placeholder="pl. 2x2 japán stílus" autocomplete="off" />
+          </label>
+
+          <label>
+            <span>Méret</span>
+            <select id="size-filter">
+              <option value="">Minden méret</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Stílus</span>
+            <select id="style-filter">
+              <option value="">Minden stílus</option>
+            </select>
+          </label>
+
+          <button id="reset-button" type="button">Törlés</button>
+        </div>
+      </section>
+
+      <section class="book-status" aria-live="polite">
+        <p id="result-summary">Betöltés...</p>
+        <div class="book-actions">
+          <button id="prev-page" type="button">Előző oldal</button>
+          <span id="page-status">1 / 1</span>
+          <button id="next-page" type="button">Következő oldal</button>
+        </div>
+      </section>
+
+      <section class="book-frame" aria-label="Lapozható katalógus">
+        <div id="flipbook"></div>
+      </section>
+    </main>
+
+    <template id="cover-template">
+      <section class="page cover-page">
+        <div class="cover-inner">
+          <p class="eyebrow">Diszkertek ügyfélanyag</p>
+          <h2>Évelő ágyások katalógusa</h2>
+          <p>
+            Magyarországon tartható, télálló évelőkből összeállított mintatervek
+            1x1, 2x2, 3x3 és 4x4 méteres ágyásokhoz.
+          </p>
+          <div class="cover-grid">
+            <span>kereshető</span>
+            <span>lapozható</span>
+            <span>ügyfélbemutató</span>
+          </div>
+          <small>Az árak és termékképek később cserélhetők, a szerkezet készen áll.</small>
+        </div>
+      </section>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+    <script src="./assets/main.js?v=3" type="module"></script>
+  </body>
+</html>
