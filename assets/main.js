@@ -391,11 +391,6 @@ function coverPage() {
   return `
     <article class="page cover-page">
       <img src="./assets/img/hero.png" alt="Kerti ágyás katalógus Díszkertek borító">
-      <div class="cover-copy" aria-hidden="true">
-        <p>Díszkertek</p>
-        <h1>Kerti ágyás katalógus</h1>
-        <span>Kertépítéshez</span>
-      </div>
     </article>
   `;
 }
@@ -430,7 +425,8 @@ function pageFlipConfig() {
     minHeight: narrow ? 480 : 560,
     maxHeight: narrow ? 680 : 1200,
     drawShadow: true,
-    flippingTime: 900,
+    maxShadowOpacity: 0.24,
+    flippingTime: 1250,
     usePortrait: tablet,
     startPage: 0,
     autoSize: false,

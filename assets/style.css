@@ -7,7 +7,9 @@
   --green-dark: #0f3b1b;
   --line: #d9d9d2;
   --soft: #f1f0e6;
-  --shadow: 0 18px 44px rgba(0, 0, 0, 0.16);
+  --shadow: 0 16px 38px rgba(0, 0, 0, 0.14);
+  --font-title: Georgia, "Times New Roman", serif;
+  --font-script: "Segoe Script", "Brush Script MT", cursive;
 }
 
 * {
@@ -23,7 +25,7 @@ body {
   min-width: 320px;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  font-family: var(--font-title);
 }
 
 img {
@@ -223,8 +225,9 @@ select {
   width: 100%;
   height: 100%;
   margin: 0;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  background: #0f3b1b;
 }
 
 .catalog-page {
@@ -579,76 +582,135 @@ th:nth-child(n + 2) {
 #flipBook .stf__block {
   max-width: 100%;
 }
-@media (max-width: 640px) {
-  .cover-page {
-    background: #0f3b1b;
+
+/* Typography aligned with cover */
+.brand strong,
+.page-title,
+.cover-page,
+.panel h3,
+.plan-title,
+.box h3,
+.service-columns h3 {
+  font-family: var(--font-title);
+}
+
+.brand small,
+.description h3 {
+  font-family: var(--font-script);
+  font-weight: 400;
+  text-transform: none;
+}
+
+input,
+select,
+button,
+table,
+.description p,
+.check-list,
+.legend-list,
+.season-list,
+.contact-card,
+.book-topline p,
+#pageInfo,
+.quick-links a {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 980px) {
+  .site-header,
+  .book-topline {
+    display: grid;
+  }
+
+  .quick-links {
+    justify-content: start;
+  }
+
+  .catalog-controls,
+  .page-hero,
+  .content-grid,
+  .bottom-grid,
+  .services-layout,
+  .service-columns {
+    grid-template-columns: 1fr;
+  }
+
+  #flipBook {
+    height: clamp(600px, 80svh, 820px);
+    min-height: 600px;
+  }
+
+  .page {
+    padding: 18px;
   }
 
   .cover-page img {
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
-    background: #0f3b1b;
   }
-}
-.cover-copy {
-  position: absolute;
-  left: 50%;
-  top: 48%;
-  width: min(78%, 760px);
-  transform: translate(-50%, -50%);
-  padding: clamp(14px, 2.4vw, 26px);
-  border: 1px solid rgba(255, 255, 255, 0.58);
-  background: rgba(255, 255, 255, 0.58);
-  color: #0f3b1b;
-  text-align: center;
-  pointer-events: none;
-}
 
-.cover-copy p,
-.cover-copy h1,
-.cover-copy span {
-  margin: 0;
-}
-
-.cover-copy p {
-  font-size: clamp(0.88rem, 1.4vw, 1.2rem);
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.cover-copy h1 {
-  margin-top: 8px;
-  font-size: clamp(1.8rem, 5vw, 4.8rem);
-  line-height: 1.02;
-  text-transform: uppercase;
-}
-
-.cover-copy span {
-  display: block;
-  margin-top: 8px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.35rem, 4vw, 3.6rem);
-  font-style: italic;
+  .main-image {
+    height: 240px;
+  }
 }
 
 @media (max-width: 640px) {
-  .cover-copy {
-    top: 47%;
-    width: 84%;
-    padding: 12px;
+  main {
+    width: min(100% - 12px, 1440px);
+    padding-top: 8px;
   }
 
-  .cover-copy p {
+  .site-header {
+    position: static;
+    gap: 10px;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .quick-links a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .catalog-controls {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .pager {
+    justify-content: space-between;
+  }
+
+  #flipBook {
+    height: clamp(520px, 76svh, 680px);
+    min-height: 520px;
+  }
+
+  .page {
+    padding: 14px;
+  }
+
+  .cover-page img {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .page-title {
+    font-size: 1.1rem;
+  }
+
+  .main-image {
+    height: 200px;
+  }
+
+  table {
     font-size: 0.72rem;
-    letter-spacing: 0.1em;
   }
 
-  .cover-copy h1 {
-    font-size: clamp(1.35rem, 8vw, 2.3rem);
-  }
-
-  .cover-copy span {
-    font-size: clamp(1.15rem, 7vw, 2rem);
+  th,
+  td {
+    padding: 5px;
   }
 }
